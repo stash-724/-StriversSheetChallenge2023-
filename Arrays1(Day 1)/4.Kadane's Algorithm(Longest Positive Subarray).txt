@@ -1,0 +1,8 @@
+public static long maxSubarraySum(int[] arr, int n) {
+	long currSum = 0, maxSum = 0;
+        for(int i : arr){
+            currSum += i;
+            maxSum = Math.max(currSum, maxSum);
+            currSum = Math.max(currSum, 0);
+        }return maxSum;
+}
