@@ -1,0 +1,32 @@
+1.maths:
+ public static int[] missingAndRepeating(ArrayList<Integer> arr, int n) {
+        long sn = (n*(n+1))/2;
+        long s2n = (n*(n+1)*(2*n+1)) / 6;
+        long sa = 0, s2a = 0;   
+        for(int i : arr){
+            sa += i;
+            s2a +=(long) i *(long) i;
+        }
+        long a = sa - sn;
+        long b = s2a - s2n;
+        b = b/a;
+        int f = (int)(a+b)/2;
+        int s = (int)b - f ;
+        return new int[] {s,f};
+    }
+2.set :
+ public static int[] missingAndRepeating(ArrayList<Integer> arr, int n) {
+        int sum = 0;
+        int[] ans = new int[2];
+        HashSet<Integer> hs = new HashSet<>();
+        for(int i : arr){
+            if(!hs.contains(i)){
+                hs.add(i);
+                sum+=i;
+            }else{
+                ans[1] = i;
+            }
+        }
+        ans[0] = (n*(n+1))/2 - sum;
+        return ans;
+    }
